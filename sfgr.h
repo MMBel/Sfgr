@@ -93,6 +93,7 @@ public:
     Layer*  NewLayer();
     void    FinLayer(Layer* LayerPtr);
     void    DelLayer(Layer* LayerPtr);
+    void    Stop();
     ~Sfgr();
 };
 #endif // SFGR_H

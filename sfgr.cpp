@@ -7,8 +7,8 @@ void            Sfgr_Configuration::Init(){
     YTitle = L"Амплитуда, dBa";
     Xtitle = L"Частота, Гц";
     Vidmode = sf::VideoMode::getDesktopMode();
-    Vidmode.width-=Vidmode.width*0.05;
-    Vidmode.height-=Vidmode.height*0.15;
+//    Vidmode.width-=Vidmode.width*0.05;
+//    Vidmode.height-=Vidmode.height*0.15;
     Font = getFontNamed("tahoma");
     ScrshotDir = "";
     if(Font.getInfo().family=="") cout << "SFGR: Font not loaded!" << endl;
@@ -265,6 +265,7 @@ void    Sfgr::winloop(){
     sf::Sprite msp;
     msp.setTexture(MTexture.getTexture());
     while(Window.isOpen()){
+        if(Layers.empty()) { Window.close(); return; }
         sf::Event event;
         while(Window.pollEvent(event)) {
             if(event.type == sf::Event::Closed) { Window.close(); return; }
@@ -313,6 +314,15 @@ void    Sfgr::Start(){
     }
     FinLayer(m);
     t = new std::thread([this]() {winloop();});
+}
+void    Sfgr::Stop(){
+    Layers_busy=true;
+    for(std::vector<Layer*>::iterator it = Layers.begin(); it != Layers.end(); it++){
+        Layer* f = *it;
+        f->ClearObjects();
+        delete f;
+    }
+    Layers.clear();
 }
 Layer*  Sfgr::NewLayer(){
     Layer* n = new Layer();
