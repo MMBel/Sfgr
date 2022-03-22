@@ -24,6 +24,8 @@ public:
     unsigned                    TitleFontSize, AxisTitleFontSize, AxisMarksFontSize, AxisBold, GridBold;
     unsigned                    LMargin, RMargin, TMargin, BMargin;
     unsigned                    FPS = 30;
+    unsigned                    WinWidthPercent = 100;
+    unsigned                    WinHeightPercent = 100;
     std::string                 WindowTitle, ScrshotDir;
     sf::String                  Title, Xtitle, YTitle;
     std::vector<float>          XGrid, YGrid;
@@ -45,7 +47,6 @@ public:
         unsigned long long              mSerial = 0;
     };
 private:
-    std::thread         t;
     sf::RenderWindow    Window;
     void                winloop();
     unsigned long long  FramesCounter = 0;
@@ -56,6 +57,7 @@ private:
     void                LockFrames();
     void                UnlockFrames();
 public:
+    std::thread         t;
     Configuration cfg;
     Sfgr();
     virtual ~Sfgr();

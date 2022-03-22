@@ -12,6 +12,8 @@ int main()
     Sfgr graph;
     graph.cfg.ScrshotDir="a:\\CPP\\Sfgr";
     graph.cfg.Title=L"Пример синусоидного графика";
+    graph.cfg.WinHeightPercent=90;
+    graph.cfg.WinWidthPercent=90;
     graph.Start();
     int GraphSize = graph.cfg.XDimMax-graph.cfg.XDimMin;
 
