@@ -26,12 +26,16 @@
  8. Опубликовать слой ```f``` на отображаемом окне: ```graph.ShowFrame(f);```<br>
  9. Удалить слой из окна (перед публикацией следующего кадра): ```graph.DeleteFrame(f);```<br>
  10. Можно так же рисовать точки: ```f->AddPoint(20, -40, 3, sf::Color::Red, L"Метка", 16);```<br>
- 11. И линии:<br>
+ 11. Линии:<br>
  ```
  f->AddHLine(-30, 1, sf::Color::Red, L"порог", 14);
  f->AddVLine(1000, 1, sf::Color::Red, L"1КГц", 14);
  ```
- 12. Можно делать снимки кнопкой PageDown (если задан каталог куда их класть ```graph.cfg.ScrShotDir="c:\\results";```)
+ 12. Текстовые метки:<br>
+ ```
+ f->AddHText(f, graph.cfg.Vidmode.width, 20, "Метка", 16, sf::Color::Blue, sf::Text::Regular, Sfgr::TextPos::LEFTER);
+ ```
+ 13. Можно делать снимки кнопкой PageDown (если задан каталог куда их класть ```graph.cfg.ScrShotDir="c:\\results";```)
  
  Живой пример можно посмотреть в main.cpp<br>
  <img src="graf.jpg" width=100%>
